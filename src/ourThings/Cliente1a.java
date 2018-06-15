@@ -14,11 +14,20 @@ package ourThings;
 import java.net.Socket;
 
 public class Cliente1a extends javax.swing.JFrame {
-
+    private Socket cliente_socket;
+    private String nome;
     /** Creates new form Cliente1a */
     public Cliente1a() {
         initComponents();
     }
+
+    public Cliente1a(Socket cliente_socket, String nome) {
+        this.cliente_socket = cliente_socket;
+        this.nome = nome;
+        initComponents();
+    }
+    
+    
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -89,7 +98,7 @@ public class Cliente1a extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        Cliente2 frame2 = new Cliente2();
+        Cliente2 frame2 = new Cliente2(cliente_socket, nome);
         frame2.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 

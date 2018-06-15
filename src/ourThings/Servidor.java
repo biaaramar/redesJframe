@@ -118,7 +118,7 @@ public class Servidor extends javax.swing.JFrame {
             Servidor2 servidor2 = new Servidor2(this);
             servidor2.setVisible(true);
 
-            gerenteServidor gServer = new gerenteServidor(this);     //Abrindo a porta para o servidor.
+            gerenteServidor gServer = new gerenteServidor(this, servidor2);     //Abrindo a porta para o servidor.
             System.out.println("Porta 2130 aberta!");
         }catch (IOException e) {
             System.out.println("Não obteve conexão.");

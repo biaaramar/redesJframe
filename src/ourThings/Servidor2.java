@@ -27,7 +27,9 @@ public class Servidor2 extends javax.swing.JFrame {
         initComponents();
     }
     
-    
+    public void setJmensagemServidor(String t){
+        jMensagemServidor.setText(t);
+    }
     
 
     /**
@@ -43,6 +45,7 @@ public class Servidor2 extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jMensagemServidor = new javax.swing.JTextArea();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -62,26 +65,36 @@ public class Servidor2 extends javax.swing.JFrame {
             }
         });
 
-        jMensagemServidor.setBackground(new java.awt.Color(204, 204, 204));
+        jMensagemServidor.setBackground(new java.awt.Color(0, 0, 0));
         jMensagemServidor.setColumns(20);
         jMensagemServidor.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jMensagemServidor.setForeground(new java.awt.Color(0, 153, 0));
         jMensagemServidor.setRows(5);
         jScrollPane1.setViewportView(jMensagemServidor);
+
+        jLabel1.setFont(new java.awt.Font("Courier New", 0, 36)); // NOI18N
+        jLabel1.setText("Servidor");
 
         javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
         jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
         jInternalFrame1Layout.setHorizontalGroup(
             jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1)
-            .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                .addContainerGap(365, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 434, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jInternalFrame1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jInternalFrame1Layout.createSequentialGroup()
+                .addGap(129, 129, 129)
+                .addComponent(jLabel1)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jInternalFrame1Layout.setVerticalGroup(
             jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jInternalFrame1Layout.createSequentialGroup()
-                .addContainerGap(45, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -145,7 +158,8 @@ public class Servidor2 extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
     private javax.swing.JInternalFrame jInternalFrame1;
-    private javax.swing.JTextArea jMensagemServidor;
+    private javax.swing.JLabel jLabel1;
+    public javax.swing.JTextArea jMensagemServidor;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

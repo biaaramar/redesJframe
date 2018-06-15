@@ -81,6 +81,7 @@ public class Cliente extends javax.swing.JFrame implements Serializable{
 
         NameJ.setBackground(new java.awt.Color(204, 204, 204));
         NameJ.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        NameJ.setText("italo");
         NameJ.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NameJActionPerformed(evt);
@@ -94,6 +95,7 @@ public class Cliente extends javax.swing.JFrame implements Serializable{
 
         Jip.setBackground(new java.awt.Color(204, 204, 204));
         Jip.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        Jip.setText("127.0.0.1");
         Jip.setToolTipText("");
         Jip.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -177,9 +179,10 @@ public class Cliente extends javax.swing.JFrame implements Serializable{
             this.nome = NameJ.getText();
             this.ip = Jip.getText();
             cliente_socket = new Socket(this.ip, 2130);
+            Cliente cliente = new Cliente(nome, ip);
             JOptionPane.showMessageDialog(this, "Conectado");
             ObjectOutputStream objSaida = new ObjectOutputStream(cliente_socket.getOutputStream());
-            objSaida.writeObject(this);
+            objSaida.writeObject(cliente);
             objSaida.flush();
             
             //new Receiver(cliente_socket) {};
@@ -188,7 +191,7 @@ public class Cliente extends javax.swing.JFrame implements Serializable{
             Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
         }
         this.setVisible(false);
-        Cliente1a frame1a = new Cliente1a();
+        Cliente1a frame1a = new Cliente1a(cliente_socket, this.nome);
         frame1a.setVisible(true);
         
         

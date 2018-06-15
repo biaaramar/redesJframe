@@ -16,19 +16,18 @@ import javax.swing.JOptionPane;
 public class Monitor implements Runnable {
     private gerenteServidor servidor;
     private Socket cliente;
-    private Servidor server;
+    private Servidor2 server2;
 
-    public Monitor(gerenteServidor servidor, Socket cliente, Servidor server) {
-        this.server = server;
+    public Monitor(gerenteServidor servidor, Socket cliente, Servidor2 server2) {
         this.servidor = servidor;
         this.cliente = cliente;
+        this.server2 = server2;
         Thread t = new Thread(this);
         t.start();
     }
 
     @Override
     public void run() {
-        Servidor2 server2 = new Servidor2();
         ObjectInputStream entrada;
         boolean flag = true;
         while(flag){
@@ -38,7 +37,7 @@ public class Monitor implements Runnable {
                 * */
                 entrada = new ObjectInputStream(this.cliente.getInputStream());
                 Cliente cliente = (Cliente) entrada.readObject();
-               // servidor.clienteArrayList.add(cliente);
+                servidor.clienteArrayList.add(cliente);
                 flag = cliente.flag;
             } catch (IOException e) {
                 e.printStackTrace();
@@ -54,8 +53,18 @@ public class Monitor implements Runnable {
             entrada = new ObjectInputStream(this.cliente.getInputStream());
             Mensagem msg = (Mensagem) entrada.readObject();
             flag = msg.flag;
-            System.out.println();
-            System.out.println("Remeente: " + msg.getRemetente());
+            
+            //server2.setJmensagemServidor("\n");
+            //server2.jMensagemServidor.setText(server2.jMensagemServidor.getName().concat("Remeteent: "+msg.getRemetente()));
+            
+            server2.jMensagemServidor.setText(server2.jMensagemServidor.getText()+"\n"+
+                   "Remetente: "+msg.getRemetente()+"\n"+ "Destinatario: " + msg.getDestinatario()+"\n"+
+                    "Data: " + msg.getDate()+"\n"+"Assunto: " + msg.getAssunto()+"n"+"Texto: " + msg.getTexto()+"\n");
+            
+            
+            //server2.setJmensagemServidor("\n");
+            
+            System.out.println("Remetente: " + msg.getRemetente());
             System.out.println("Destinatario: " + msg.getDestinatario());
             System.out.println("Data: " + msg.getDate());
             System.out.println("Assunto: " + msg.getAssunto());
