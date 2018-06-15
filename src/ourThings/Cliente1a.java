@@ -12,13 +12,35 @@ package ourThings;
  */
 
 import java.net.Socket;
+import java.util.ArrayList;
 
 public class Cliente1a extends javax.swing.JFrame {
+    public static ArrayList<Mensagem> msgList = new <Mensagem>ArrayList(); //Array onde armazena as mensagens para cada usuário.
     private Socket cliente_socket;
+
+    public Socket getCliente_socket() {
+        return cliente_socket;
+    }
     private String nome;
     /** Creates new form Cliente1a */
     public Cliente1a() {
         initComponents();
+    }
+    
+    public void getPilha() {
+        if (this.msgList.isEmpty()){
+            System.out.println("Você não possui mensagens.");
+        }else{
+            for(int i = this.msgList.size()-1; i>=0;i--){
+                System.out.println();
+                System.out.println("Remetente: "+this.msgList.get(i).getRemetente());
+                System.out.println("Destinatario: "+this.msgList.get(i).getDestinatario());
+                System.out.println("Data: "+this.msgList.get(i).getDate());
+                System.out.println("Assunto: "+this.msgList.get(i).getAssunto());
+                System.out.println("Texto: "+this.msgList.get(i).getTexto());
+                System.out.println();
+            }
+        }
     }
 
     public Cliente1a(Socket cliente_socket, String nome) {
@@ -125,6 +147,7 @@ public class Cliente1a extends javax.swing.JFrame {
                     break;
                 }
             }
+            
         } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(Cliente1a.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
@@ -135,13 +158,14 @@ public class Cliente1a extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Cliente1a.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Cliente1a().setVisible(true);
             }
         });
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

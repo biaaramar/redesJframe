@@ -53,23 +53,11 @@ public class Monitor implements Runnable {
             entrada = new ObjectInputStream(this.cliente.getInputStream());
             Mensagem msg = (Mensagem) entrada.readObject();
             flag = msg.flag;
-            
-            //server2.setJmensagemServidor("\n");
-            //server2.jMensagemServidor.setText(server2.jMensagemServidor.getName().concat("Remeteent: "+msg.getRemetente()));
-            
+                        
             server2.jMensagemServidor.setText(server2.jMensagemServidor.getText()+"\n"+
                    "Remetente: "+msg.getRemetente()+"\n"+ "Destinatario: " + msg.getDestinatario()+"\n"+
-                    "Data: " + msg.getDate()+"\n"+"Assunto: " + msg.getAssunto()+"n"+"Texto: " + msg.getTexto()+"\n");
-            
-            
-            //server2.setJmensagemServidor("\n");
-            
-            System.out.println("Remetente: " + msg.getRemetente());
-            System.out.println("Destinatario: " + msg.getDestinatario());
-            System.out.println("Data: " + msg.getDate());
-            System.out.println("Assunto: " + msg.getAssunto());
-            System.out.println("Texto: " + msg.getTexto());
-            System.out.println();
+                    "Data: " + msg.getDate()+"\n"+"Assunto: " + msg.getAssunto()+"\n"+"Texto: " + msg.getTexto()+"\n");
+     
             if(servidor.clienteArrayList.isEmpty()){
                 System.out.println("Sem clientes!");
             }else{
@@ -77,16 +65,18 @@ public class Monitor implements Runnable {
                 * Procura o destinatário da mensagem e a envia pra ele procurando na lista de Sockets.
                 * */          
                 for (int i = 0; i < servidor.clienteArrayList.size(); i++) {
-                    if (servidor.clienteArrayList.get(i).getName().intern() ==
+                    System.out.println("oi");
+                    if (servidor.clienteArrayList.get(i).getNome().intern() ==
                             msg.getDestinatario().intern()) {
                         ObjectOutputStream saida = new ObjectOutputStream(servidor.ipArrayList.get(i).getOutputStream());
+                        System.out.println("enviei");
                         saida.writeObject(msg);
                         saida.flush();
                     }
                     /*
                     * Caso o usuário tenha se desconectado(flag acionada), Excluiremos das listas.
                     **/                
-                    if(!flag && servidor.clienteArrayList.get(i).getName().intern()== msg.getRemetente().intern()){
+                    if(!flag && servidor.clienteArrayList.get(i).getNome().intern()== msg.getRemetente().intern()){
                         servidor.clienteArrayList.remove(i);
                         servidor.ipArrayList.remove(i);
                     }
