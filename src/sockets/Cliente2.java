@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ourThings;
+package sockets;
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;
@@ -164,9 +164,6 @@ public class Cliente2 extends javax.swing.JFrame {
     private void jEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jEnviarActionPerformed
         try {
             // TODO add your handling code here:
-            /*
-            * Colhe dados para a contrução da mensagem e manda para o servidor.
-            * */
             ObjectOutputStream objSaida = new ObjectOutputStream(this.cliente_socket.getOutputStream());
             Mensagem msg = new Mensagem(this.nome);
             msg.setDestinatario(jDestinatario.getText());
@@ -229,6 +226,21 @@ public class Cliente2 extends javax.swing.JFrame {
             }
         });
     }
+            //objSaida.writeObject(msg);
+               // objSaida.flush();
+            //if (t_terminal.readLine().intern() == "N"){ //Acionamento da flag e interrompre a criação de Mensagens.
+              //  flag = false;
+                //msg.flag = false;
+                //objSaida.writeObject(msg);
+                //System.out.println();
+                //System.out.print("Você deseja visualizar suas mensangens recebidas ?(Y/N) ");
+               // if (t_terminal.readLine().intern() == "Y"){
+               //     rec.getPilha(); //Mostra a pilha de mensagens recebidas.
+                //}
+            //}else{
+              //  objSaida.writeObject(msg);
+              //  objSaida.flush();
+            //}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField jAssunto;

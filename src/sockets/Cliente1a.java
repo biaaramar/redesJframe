@@ -4,11 +4,11 @@
  * and open the template in the editor.
  */
 
-package ourThings;
+package sockets;
 
 /**
  *
- * @author franc
+ * 
  */
 
 import java.net.Socket;
@@ -27,7 +27,7 @@ public class Cliente1a extends javax.swing.JFrame {
         initComponents();
     }
     
-    // Mostra as mensagens em pilha na aba de caixa de mensagens.
+    // Envia
     public void getPilha(Cliente3 cliente3) {
         if (this.msgList.isEmpty()){
             cliente3.jTextUsuario.setText("Você não possui mensagens.");
@@ -45,6 +45,7 @@ public class Cliente1a extends javax.swing.JFrame {
         this.nome = nome;
         initComponents();
     }
+    
     
 
     /** This method is called from within the constructor to

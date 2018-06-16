@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ourThings;
+package sockets;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -24,6 +24,7 @@ public class Cliente extends javax.swing.JFrame implements Serializable{
 
     /**
      * Creates new form Cliente
+     * 
      */
     public boolean flag = false;
     private String nome;
@@ -90,7 +91,7 @@ public class Cliente extends javax.swing.JFrame implements Serializable{
         jLabel2.setBackground(new java.awt.Color(102, 102, 102));
         jLabel2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel2.setText("IP do servidor");
+        jLabel2.setText("IP do usuário:");
 
         Jip.setBackground(new java.awt.Color(204, 204, 204));
         Jip.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -191,10 +192,10 @@ public class Cliente extends javax.swing.JFrame implements Serializable{
             * Cria uma thread para, simultaneamente, ficar apto a receber mensagens.
             * Envia o objeto cliente para o servidor.
             * */
-            NewClass nc = new NewClass(frame1a);
+            Receiver nc = new Receiver(frame1a);
+
         } catch (IOException ex) {
             Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(this, "Não existe um servidor hospedado na porta 2130");
         }
         
         
